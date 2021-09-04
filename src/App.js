@@ -1,56 +1,31 @@
 import React from 'react';
-import logo from './logo.svg';
+import logo from './images/logo.png'
 import { Counter } from './features/counter/Counter';
+import NavbarComponent from './Components/Navbar/Navbar';
 import './App.css';
+import { Nav } from 'react-bootstrap';
+import Timeline from './Pages/Timeline/Timeline';
+import Feed from './Pages/Feed/Feed';
+import SignUp from './Pages/Signup/Signup';
+import Login from './Pages/Login/Login';
+import { Route, Routes } from 'react-router-dom';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
+      <NavbarComponent/>
+      <div className="App-Screen">
+        
+        <div className="app-disp">
+        <Routes>
+          <Route path="/feed" element={<Feed/>} />
+          <Route path="/timeline" element={<Timeline/>}/>
+          <Route path="/signup" element={<SignUp/>} />
+          <Route path="/login" element={<Login/>} />
+        </Routes>
+        </div>
+        
+      </div>
     </div>
   );
 }

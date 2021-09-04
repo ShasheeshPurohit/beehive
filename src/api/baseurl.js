@@ -1,0 +1,1 @@
+export const baseurl = "https://beehive-backend.shasheeshpuroh1.repl.co";

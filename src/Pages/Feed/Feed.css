@@ -1,0 +1,88 @@
+.feed-layout{
+    display: flex;
+    text-align: center;
+    justify-content: flex-start;
+    width: 100%;
+    /* background-color: black; */
+    
+}
+
+.feed-nav{
+    min-width: 15rem;
+    background-color: rgba(245, 200, 66);
+    min-height: 100vh;
+    border-radius: 15px;
+    padding: 1rem;
+    margin-right: 5rem;
+}
+
+.post-feed{
+    background-color: rgba(182, 182, 182, 0.575);
+    width: 55rem;
+    margin-right: 4rem;
+    display: flex;
+    flex-direction: column;
+    border-radius: 15px;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.feed-users-section{
+    background-color: rgba(245, 200, 66);
+    min-width: 12rem;
+    border-radius: 15px;
+    padding: 1rem;
+}
+
+.post-list{
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+}
+
+/* .post-box-feed{
+    margin: auto;
+} */
+
+.post-list-post{
+    width: 40rem;
+    border: 1px solid black;
+    margin-top: 1rem ;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    padding: 1rem;
+    justify-content: flex-start;
+    color: white;
+    border-radius: 10px;
+    background-color: rgb(32, 32, 32);
+}
+
+
+.post-user-icon{
+    height: 1.5rem;
+}
+
+.feed-sidenav-links{
+    padding: 0;
+    list-style: none;
+}
+
+.feed-sidenav-link:link,
+.feed-sidenav-link:visited{
+    text-decoration: none;
+    color: black;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 1.2rem;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+}
+
+.feed-sidenav-link:hover{
+    border-bottom: 2px solid black;
+}
+

@@ -1,0 +1,29 @@
+.loginForm{
+    background:linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.6));
+    max-width: 20rem;
+    margin: auto;
+    margin-top: 5rem;
+    color: white;
+    border-radius: 10px;
+    padding: 1rem 0;
+    
+}
+
+.login-field{
+    max-width: 15rem;
+    margin: 1rem auto;
+}
+
+.login-heading{
+    text-transform: uppercase;
+    color: rgb(226, 173, 0);
+    margin-bottom: 2rem;
+}
+
+.login-btn{
+    margin: 1rem;
+}
+
+.login-btn:hover{
+    color: white;
+}
