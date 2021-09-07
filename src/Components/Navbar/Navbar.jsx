@@ -20,11 +20,11 @@ export default function NavbarComponent(){
               height="30"
               className="d-inline-block align-top"
             />{' '}
-          Beehive
+          beehive
           </Navbar.Brand>
-          <ul style={{color:"white"}} className="navbar-list">
-            {state.token?<li>Hi</li>:""}            
-          </ul>
+          {/* <ul style={{color:"white"}} className="navbar-list">
+            {state.token?<li>Hi {state.currentUser.userName}</li>:""}            
+          </ul> */}
         </Container>
       </Navbar>
     

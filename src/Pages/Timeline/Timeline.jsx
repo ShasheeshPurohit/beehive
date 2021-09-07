@@ -7,15 +7,19 @@ import { useSelector, useDispatch } from "react-redux";
 import { setupAuthHeaderForServiceCalls } from "../../features/Auth/util";
 import { loadTimeline } from "../../features/Auth/authSlice";
 import bee from "../../images/bee.png"
+import { loadFriends } from "../../features/Friends/OtherUserSlice";
 
 export default function Timeline(){
 
     const dispatch = useDispatch();
     const state = useSelector((state)=>state.userData)
+    const {followers, following, allUsers} = useSelector((state)=>state.friendsData)
+    
 
     useEffect(()=>{
         setupAuthHeaderForServiceCalls(state.token)
         dispatch(loadTimeline("param"))
+        dispatch(loadFriends("param"))
     },[dispatch])
 
     return(
@@ -31,7 +35,10 @@ export default function Timeline(){
             <Row className="profile-bio">
                 <Col className="bio-box">bio phy chem sab yahii haii</Col>
             </Row>
-
+            <div className="user-follow-info">
+                <p>Followers<br/>{followers===null?"":followers.length}</p>
+                <p>Following<br/>{following===null?"":following.length}</p>
+            </div>
             <Row>
                 <Col className="post-box-container">
                 <div  className="post-box-timeline">

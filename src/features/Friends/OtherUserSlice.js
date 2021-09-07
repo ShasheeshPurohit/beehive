@@ -1,10 +1,11 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { baseurl } from "../../utils/baseurl";
+import { baseurl } from "../../api/baseurl";
 import axios from 'axios'
 
 export const loadAllUsers = createAsyncThunk('friendsManagement/loadAll',
 async (param, { fulfillWithValue, rejectWithValue }) => {
     try {
+  
         const response = await axios.get(`${baseurl}/user`);
         // console.log(response.data);
         return fulfillWithValue(response.data.allUsers);
@@ -17,8 +18,9 @@ async (param, { fulfillWithValue, rejectWithValue }) => {
 export const loadFriends = createAsyncThunk('friendsManagement/load',
 async (param, { fulfillWithValue, rejectWithValue }) => {
     try {
+       console.log("triggered")
         const response = await axios.get(`${baseurl}/friends`);
-        // console.log(response.data);
+        console.log("data:",response.data);
         return fulfillWithValue(response.data);
       } catch (error) {
         console.log(error.response.data);
@@ -29,8 +31,9 @@ async (param, { fulfillWithValue, rejectWithValue }) => {
 export const followFriend = createAsyncThunk('friendsManagement/follow',
 async ({otherUserId}, { fulfillWithValue, rejectWithValue }) => {
     try {
+        console.log(otherUserId)
         const response = await axios.post(`${baseurl}/friends/follow/${otherUserId}`, {});
-        // console.log(response.data);
+        console.log(response.data);
         return fulfillWithValue(response.data);
       } catch (error) {
         console.log(error.response.data);

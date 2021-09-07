@@ -1,88 +1,147 @@
 .feed-layout{
+    margin-top: 1rem;
     display: flex;
-    text-align: center;
-    justify-content: flex-start;
-    width: 100%;
-    /* background-color: black; */
+    justify-content: space-around;
+    /* background-color: red; */
+    /* flex-wrap: wrap; */
+
+}
+
+
+.post-feed{
+    width: 45rem;
+    margin: 0 1rem;
+    /* border: 1px solid black; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+    overflow-y: scroll;
+    height: 88vh;
+}
+
+.feed-sidebar{
+    width: 15rem;
+    border-radius: 10px;
+    background-color: rgb(241, 226, 9);
+    /* border: 1px solid black; */
+    max-height: 88vh;
+}
+
+::-webkit-scrollbar {
+    width: 0;  /* Remove scrollbar space */
+    background: transparent;  /* Optional: just make scrollbar invisible */
+}
+/* Optional: show position indicator in red */
+::-webkit-scrollbar-thumb {
+    background: #FF0000;
+}
+
+.other-user-section{
+    /* border: 1px solid black; */
+    width: 15rem;
+    background-color: rgb(241, 226, 9);
+    border-radius: 10px;
+    max-height: 88vh;
+    overflow-y: hidden;
     
 }
 
-.feed-nav{
-    min-width: 15rem;
-    background-color: rgba(245, 200, 66);
-    min-height: 100vh;
-    border-radius: 15px;
-    padding: 1rem;
-    margin-right: 5rem;
+.loader{
+    margin-top: 2rem;
 }
 
-.post-feed{
-    background-color: rgba(182, 182, 182, 0.575);
-    width: 55rem;
-    margin-right: 4rem;
-    display: flex;
-    flex-direction: column;
-    border-radius: 15px;
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-}
-
-.feed-users-section{
-    background-color: rgba(245, 200, 66);
-    min-width: 12rem;
-    border-radius: 15px;
-    padding: 1rem;
-}
-
-.post-list{
-    padding: 0;
+.feed-post-list{
     list-style: none;
-    display: flex;
-    flex-direction: column-reverse;
-    align-items: center;
+    padding: 0;
 }
 
-/* .post-box-feed{
-    margin: auto;
-} */
-
-.post-list-post{
-    width: 40rem;
-    border: 1px solid black;
-    margin-top: 1rem ;
-    display: flex;
-    flex-direction: column;
-    text-align: left;
-    padding: 1rem;
-    justify-content: flex-start;
+.feed-post{
+    margin: 2rem 0 0 0 ;
     color: white;
+    background-color: rgba(0, 0, 0, 0.8);
+    width: 40rem;
     border-radius: 10px;
-    background-color: rgb(32, 32, 32);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem;
 }
 
 
-.post-user-icon{
-    height: 1.5rem;
-}
-
-.feed-sidenav-links{
-    padding: 0;
+.feed-sidebar-links{
     list-style: none;
+    padding: 0;
 }
 
-.feed-sidenav-link:link,
-.feed-sidenav-link:visited{
+.feed-sidebar-link:link,
+.feed-sidebar-link:visited{
     text-decoration: none;
+    font-weight: 500;
+    margin: 1rem 0;
     color: black;
-    text-transform: uppercase;
-    font-weight: 700;
-    font-size: 1.2rem;
-    border-bottom: 2px solid transparent;
+    font-size: 1.5rem;
+}
+
+.other-users-list{
+    list-style: none;
+    padding: 0;
+}
+
+.otheruser-card{
+    margin: 1rem 0;
+}
+
+.follow-user-btn{
+    border: none;
+    border-radius: 10px;
+    padding: 0.2rem 0.5rem;
+    color: white;
+    background-color: black;
     transition: all 0.2s;
 }
 
-.feed-sidenav-link:hover{
-    border-bottom: 2px solid black;
+.follow-user-btn:hover{
+    transform: scale(1.1);
 }
 
+.follow-user-btn:active{
+    transform: scale(0.9);
+}
+
+.post-controls{
+    display: flex;
+    /* background-color: green; */
+    width: 100%;
+}
+
+.post-controls > div{
+    width: 50%;
+    cursor: pointer;
+}
+
+.like-btn, .comment-btn{
+    border-right: 1px solid white;
+}
+
+.like-btn:hover{
+    color: red;
+}
+
+.post-control-icon{
+    transition: all 0.2s;
+    margin-right: 0.2rem;
+}
+
+.post-control-icon:hover{
+    transform: scale(1.2);
+}
+
+.post-control-icon:active{
+    transform: scale(0.9);
+}
+
+.comment-list{
+    background-color: green;
+    list-style: none;
+}

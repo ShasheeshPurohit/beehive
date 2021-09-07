@@ -7,15 +7,15 @@ import { useNavigate } from "react-router-dom";
 
 export default function Signup() {
 
-    const state = useSelector((state)=>state.userData);
+    // const state = useSelector((state)=>state.userData);
     const navigate = useNavigate();
 
-    useEffect(()=>{
-        if(state.token != undefined){
-            navigate("/feed")
-        }
+    // useEffect(()=>{
+    //     if(state.token != undefined){
+    //         navigate("/feed")
+    //     }
 
-    },[state,navigate])
+    // },[state,navigate])
 
  
         return (

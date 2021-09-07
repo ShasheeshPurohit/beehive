@@ -9,6 +9,7 @@ import Feed from './Pages/Feed/Feed';
 import SignUp from './Pages/Signup/Signup';
 import Login from './Pages/Login/Login';
 import { Route, Routes } from 'react-router-dom';
+import Home from './Pages/Home/Home';
 
 function App() {
   return (
@@ -18,8 +19,9 @@ function App() {
         
         <div className="app-disp">
         <Routes>
+          <Route path="/" element={<Home/>}/>
           <Route path="/feed" element={<Feed/>} />
-          <Route path="/timeline" element={<Timeline/>}/>
+          <Route path="/timeline/:userId" element={<Timeline/>}/>
           <Route path="/signup" element={<SignUp/>} />
           <Route path="/login" element={<Login/>} />
         </Routes>

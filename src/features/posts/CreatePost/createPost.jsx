@@ -2,7 +2,7 @@ import { useSelector, useDispatch } from "react-redux";
 import "./createPost.css"
 import { useState, useEffect } from "react";
 import bee from "../../../images/bee.png";
-import { addPost } from "../postSlice";
+import { addPost, loadPosts } from "../postSlice";
 import { loadFeed } from "../../Auth/authSlice";
 
 export default function CreatePost(){
@@ -14,10 +14,11 @@ export default function CreatePost(){
     return(
         <div className="post-box">
             <input className="post-input" type="text" value={text} placeholder="What's buzzin?..." onChange={(event)=>setText(event.target.value)}/>
-            <button className="post-create-btn" onClick={()=>{
-                dispatch(addPost({text: text}))
+            <button className="post-create-btn" onClick={async()=>{
                 setText("")
+                await dispatch(addPost({text: text}))
                 
+                dispatch(loadFeed("param"))
                 }}>buzz <img className="post-button-icon" src={bee} /></button>
             
         </div>

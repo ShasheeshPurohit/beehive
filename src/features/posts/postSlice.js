@@ -2,13 +2,15 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import { baseurl } from "../../api/baseurl";
 
+
+
 export const loadPosts = createAsyncThunk(
   "posts/load",
-  async (userId, { fulfillWithValue, rejectWithValue }) => {
+  async (param, { fulfillWithValue, rejectWithValue }) => {
     try {
-      const response = await axios.post(`${baseurl}/post/${userId}`);
-      console.log(response.data);
-      return fulfillWithValue(response.data.allPosts);
+      const response = await axios.get(`${baseurl}/feed`);
+      console.log(response.data.feedData);
+      return fulfillWithValue(response.data.feedData);
     } catch (error) {
       console.log(error.response.data);
       return rejectWithValue(error.response.data);
@@ -19,7 +21,7 @@ export const addPost = createAsyncThunk(
   "posts/add",
   async ({ text }, { fulfillWithValue, rejectWithValue }) => {
     try {
-      console.log("yaha aagyaaa")
+
       const response = await axios.post(`${baseurl}/post/new`, { text });
       console.log(response.data);
       return fulfillWithValue(response.data.newPost);
@@ -31,10 +33,10 @@ export const addPost = createAsyncThunk(
 );
 export const likePost = createAsyncThunk(
   "posts/like",
-  async (postId, { fulfillWithValue, rejectWithValue }) => {
+  async ({postId}, { fulfillWithValue, rejectWithValue }) => {
     try {
       const response = await axios.post(`${baseurl}/post/like/${postId}`, {});
-      // console.log(response.data);
+      console.log(response.data);
       return fulfillWithValue(response.data);
     } catch (error) {
       console.log(error.response.data);
@@ -80,9 +82,11 @@ const postSlice = createSlice({
     otherUser:null,
     // tempComment:null
   },
-  reducers: {},
+  reducers: {
+  },
   extraReducers: {
     [loadPosts.fulfilled]: (state, action) => {
+      console.log(action.payload)
       state.posts = action.payload;
       state.status = "success";
     },
@@ -93,15 +97,17 @@ const postSlice = createSlice({
     [likePost.fulfilled]: (state, action) => {
       const postIndex = state.posts.findIndex(
         (post) => post._id === action.payload.postId
+        
       );
 
-      state.posts[postIndex].likes = action.payload.data;
+      state.posts[postIndex].likes.push(action.payload.data);
+
     },
     [commentPost.fulfilled] : (state, action) => {
         const postIndex = state.posts.findIndex(
             (post) => post._id === action.payload.postId
           );
-    
+
           state.posts[postIndex].comments = action.payload.commentsData;
         // state.tempComment = action.payload.commentsData
     },
@@ -111,4 +117,5 @@ const postSlice = createSlice({
   },
 });
 
+export const {likeButtonPressed} = postSlice.actions
 export default postSlice.reducer;

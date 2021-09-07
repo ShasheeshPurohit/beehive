@@ -59,7 +59,7 @@
 } */
 
 .post-list-post{
-    width: 40rem;
+    width: 45rem;
     border: 1px solid black;
     margin: 1rem auto;
     display: flex;
@@ -85,3 +85,19 @@
     justify-content: center;
 }
 
+/****************FOllow,Following *****************/
+
+
+.user-follow-info{
+    display: flex;
+    /* background: red; */
+    justify-content: center;
+    margin-bottom: 1rem;    
+}
+
+.user-follow-info > p{
+    border: 1px solid black;
+    margin: 0 1rem 1rem 1rem;
+    font-size: 1.5rem;
+    width: 10rem;
+}
