@@ -6,23 +6,26 @@ import { getTokenFromLocalStorage } from './util';
 
 
 export const userLogin = createAsyncThunk(
-    'auth/login',
-    async ({userName, password}, {fulfillWithValue, rejectWithValue}) => {
-        try{
-            const response = await axios.post(`${baseurl}/user/login`, {userName, password})
-            // console.log(response.data)
-            if(response.status === 200){
-                setupAuthHeaderForServiceCalls(response.data.token);
-                setLocalStorage(response.data.user, response.data.token);
-
-            }
-            return fulfillWithValue(response.data)
-        }catch(error){
-            console.log(error.response.data)
-            return rejectWithValue(error.response.data)
-        }
+  "auth/login",
+  async ({ userName, password }, { fulfillWithValue, rejectWithValue }) => {
+    try {
+        console.log("trigger login thunk")
+      const response = await axios.post(`${baseurl}/user/login`, {
+        userName,
+        password,
+      });
+      // console.log(response.data)
+      if (response.status === 200) {
+        setupAuthHeaderForServiceCalls(response.data.token);
+        setLocalStorage(response.data.user, response.data.token);
+      }
+      return fulfillWithValue(response.data);
+    } catch (error) {
+      console.log(error.response.data);
+      return rejectWithValue(error.response.data);
     }
-)
+  }
+);
 export const userSignup = createAsyncThunk(
     'auth/signup',
     async ({fullName, userName, email, password}, {fulfillWithValue, rejectWithValue}) => {

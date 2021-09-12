@@ -5,12 +5,12 @@ export const setLocalStorage = (data, token)=>{
     localStorage.setItem("token", JSON.stringify(token));
 }
 
-export const getLocalStorage = () =>{
-    let userData = JSON.stringify(localStorage.getItem("userData"));
-    let token = JSON.stringify(localStorage.getItem("token"));
-
-    return{userData, token}
-}
+ export const getLocalStorage = () => {
+    let userData, token;
+    userData = JSON.parse(localStorage.getItem("userData"));
+    token = JSON.parse(localStorage.getItem("token"));
+    return { userData, token };
+  };
 
 export const getUserFromLocalStorage = () =>{
     let userData;

@@ -1,12 +1,15 @@
 import "./Navbar.css"
 import { Navbar, Container } from "react-bootstrap"
 import { useSelector } from "react-redux";
+import {useDispatch} from "react-redux"
 import logo from "../../images/logo.png"
+import {clearData} from "../../features/Auth/authSlice"
 
 
 export default function NavbarComponent(){
 
   const state = useSelector((state)=>state.userData)
+  const dispatch = useDispatch()
 
     return(
         
@@ -22,9 +25,9 @@ export default function NavbarComponent(){
             />{' '}
           beehive
           </Navbar.Brand>
-          {/* <ul style={{color:"white"}} className="navbar-list">
-            {state.token?<li>Hi {state.currentUser.userName}</li>:""}            
-          </ul> */}
+          <ul style={{color:"white"}} className="navbar-list">
+            {state.token?<button onClick={()=>dispatch(clearData())}>Log Off</button>:""}            
+          </ul>
         </Container>
       </Navbar>
     

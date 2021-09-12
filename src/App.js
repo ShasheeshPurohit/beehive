@@ -10,6 +10,7 @@ import SignUp from './Pages/Signup/Signup';
 import Login from './Pages/Login/Login';
 import { Route, Routes } from 'react-router-dom';
 import Home from './Pages/Home/Home';
+import { PrivateRoute } from './Pages/PrivateRoute/PrivateRoute';
 
 function App() {
   return (
