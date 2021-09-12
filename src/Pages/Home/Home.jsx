@@ -13,7 +13,7 @@ export default function Home(){
                 <p className="sub-heading">stay closer to your close ones</p>
                 <div className="main-buttons">
                     <button className="main-button signup" onClick={()=>navigate("/signup")}>Sign up</button>
-                    <button className="main-button login">Login</button>
+                    <button className="main-button login" onClick={()=>navigate("/login")}>Login</button>
                 </div>
             </div>
         </div>

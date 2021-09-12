@@ -21,8 +21,8 @@ function App() {
         <div className="app-disp">
         <Routes>
           <Route path="/" element={<Home/>}/>
-          <Route path="/feed" element={<Feed/>} />
-          <Route path="/timeline/:userId" element={<Timeline/>}/>
+          <PrivateRoute path="/feed" element={<Feed/>} />
+          <PrivateRoute path="/timeline/:userId" element={<Timeline/>}/>
           <Route path="/signup" element={<SignUp/>} />
           <Route path="/login" element={<Login/>} />
         </Routes>
