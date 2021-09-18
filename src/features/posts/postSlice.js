@@ -57,8 +57,7 @@ export const commentPost = createAsyncThunk(
     }
   }
 );
-// Loading otheruser and loading his timelien page
-// Currently doing this in post slice later to be moved seperately
+
 export const loadOtherUser = createAsyncThunk(
   "posts/loadOtherUser",
   async (userId, { fulfillWithValue, rejectWithValue }) => {

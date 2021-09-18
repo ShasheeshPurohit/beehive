@@ -15,7 +15,7 @@ export default function NavbarComponent(){
         
         <Navbar bg="dark" variant="dark">
         <Container>
-          <Navbar.Brand href="/">
+          <Navbar.Brand href={state.token?"/feed":"/"}>
             <img
               alt=""
               src={logo}

@@ -6,7 +6,7 @@ import bee from "../../images/bee.png"
 import { Link } from "react-router-dom";
 import { loadFeed } from "../../features/Auth/authSlice";
 import { setupAuthHeaderForServiceCalls } from "../../features/Auth/util";
-import { followFriend, loadAllUsers } from "../../features/Friends/OtherUserSlice";
+import { followFriend, loadAllUsers, loadFriends, unfollowFriend } from "../../features/Friends/OtherUserSlice";
 import { likePost, loadPosts } from "../../features/posts/postSlice";
 import { likeButtonPressed } from "../../features/posts/postSlice";
 import Loader from "react-loader-spinner";
@@ -15,15 +15,17 @@ export default function Feed(){
     const state = useSelector((state)=>state.userData);
     const allUsers = useSelector((state)=>state.friendsData.allUsers);
     setupAuthHeaderForServiceCalls(state.token)
-    const postState = useSelector((state)=>state.postsData)
+    const friends = useSelector((state)=> state.friendsData)
     const dispatch = useDispatch();
-
     useEffect(() => {
         setupAuthHeaderForServiceCalls(state.token);
         dispatch(loadFeed("hara"));
         dispatch(loadAllUsers("param"))
         dispatch(loadPosts("param"))
+        dispatch(loadFriends("param"))
       }, [dispatch]);
+
+    
 
     return(
         <div className="feed-layout">     
@@ -51,9 +53,22 @@ export default function Feed(){
                            <div className="feed-post">
                             <p><img src={bee} className="post-user-icon"></img>{post.authorName}</p>
                             <p>{post.text}</p>
-                            <div className="post-controls"><div className="like-btn" onClick={async()=>{
-                                await dispatch(likePost({postId:post._id}))
-                                dispatch(loadFeed("param"))}}><i class="fas fa-heart post-control-icon"></i>{post.likes.length>0?post.likes.length:""} </div>
+                            <div className="post-controls">
+                                
+                                <div className="like-btn" onClick={async()=>{
+
+                                if(post.likes.some(item=>item.id===state.currentUser._id)){
+                                    await dispatch(likePost({postId:post._id}))
+                                }
+                                else{
+                                    await dispatch(likePost({postId:post._id}))
+                                }
+                                
+                                dispatch(loadFeed("param"))}}><i class="fas fa-heart post-control-icon" style={{color:
+                                    post.likes.some(item=>item===state.currentUser._id)?"red":"white"
+                                }}></i>{post.likes.length>0?post.likes.length:""} </div>
+
+
                                 <div className="comment-btn" onClick={()=>{
                               }}><i class="fas fa-comment post-control-icon"></i>
                               
@@ -83,11 +98,18 @@ export default function Feed(){
                        {user.userName===state.currentUser.userName?"":
                        <div>
                        <p><img src={bee} className="post-user-icon"></img>{user.fullName}</p>
-                       <button className="follow-user-btn" onClick={async()=>{
+
+                       {friends.followers===null?"":(friends.following.some(item=>item._id===user._id)?<button className="follow-user-btn" onClick={async()=>{
                           
-                    await dispatch(followFriend({otherUserId:user._id}))
-                       dispatch(loadFeed("param"))
-                    }}>Follow</button>
+                          await dispatch(unfollowFriend({otherUserId:user._id}))
+                             dispatch(loadFeed("param"))
+                             dispatch(loadFriends("param"))
+                          }}>Unfollow</button>:<button className="follow-user-btn" onClick={async()=>{
+                          
+                            await dispatch(followFriend({otherUserId:user._id}))
+                               dispatch(loadFeed("param"))
+                               dispatch(loadFriends("param"))
+                            }}>follow</button>)}
                        </div>
                        }
                        </li>);
