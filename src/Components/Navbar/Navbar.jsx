@@ -28,7 +28,7 @@ export default function NavbarComponent(){
             
           </Navbar.Brand>
           <ul style={{color:"white"}} className="navbar-list">
-            {state.token?<button onClick={()=>dispatch(clearData())}>Log Off</button>:""}            
+            {state.token?<button className="logoff-btn" onClick={()=>dispatch(clearData())}>Log Off</button>:""}            
           </ul>
         </Container>
       </Navbar>

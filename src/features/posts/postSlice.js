@@ -33,9 +33,9 @@ export const addPost = createAsyncThunk(
 );
 export const likePost = createAsyncThunk(
   "posts/like",
-  async ({postId}, { fulfillWithValue, rejectWithValue }) => {
+  async ({postId, like}, { fulfillWithValue, rejectWithValue }) => {
     try {
-      const response = await axios.post(`${baseurl}/post/like/${postId}`, {});
+      const response = await axios.post(`${baseurl}/post/${like?"like":"unlike"}/${postId}`, {});
       console.log(response.data);
       return fulfillWithValue(response.data);
     } catch (error) {

@@ -57,11 +57,11 @@ export default function Feed(){
                                 
                                 <div className="like-btn" onClick={async()=>{
 
-                                if(post.likes.some(item=>item.id===state.currentUser._id)){
-                                    await dispatch(likePost({postId:post._id}))
+                                if(post.likes.some(item=>item===state.currentUser._id)){
+                                    await dispatch(likePost({postId:post._id, like:false}))
                                 }
                                 else{
-                                    await dispatch(likePost({postId:post._id}))
+                                    await dispatch(likePost({postId:post._id, like:true}))
                                 }
                                 
                                 dispatch(loadFeed("param"))}}><i class="fas fa-heart post-control-icon" style={{color:
@@ -104,7 +104,7 @@ export default function Feed(){
                           await dispatch(unfollowFriend({otherUserId:user._id}))
                              dispatch(loadFeed("param"))
                              dispatch(loadFriends("param"))
-                          }}>Unfollow</button>:<button className="follow-user-btn" onClick={async()=>{
+                          }}>unfollow</button>:<button className="follow-user-btn" onClick={async()=>{
                           
                             await dispatch(followFriend({otherUserId:user._id}))
                                dispatch(loadFeed("param"))
