@@ -4,3 +4,9 @@
     display: flex;
     margin-top: 1rem;
 }
+
+.brand-logo:link,
+.brand-logo:visited{
+    text-decoration: none;
+    color: white;
+}
